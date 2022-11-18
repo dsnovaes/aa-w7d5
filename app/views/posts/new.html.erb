@@ -1,0 +1,18 @@
+<h1>Create Post</h1>
+
+<%# create a post  %>
+<form action="<%=posts_url%>" method="POST">
+    <%= render "shared/form_token" %>
+    <label>Title<input type="text" name="post[title]" placeholder="title" required></label><br>
+    <label>Url<input type="text" name="post[url]" placeholder="url"></label><br>
+    <textarea name="post[content]" cols="45" rows="10" placeholder="content"></textarea><br>
+    <p> Subs to post into: </p>
+    <% if @subs %>
+    <% @subs.each do |sub| %>
+      <label><input type="checkbox" name="post[sub_id][]" value="<%= sub.id %>"> <%= sub.title %></label><br>
+    <%# passing the value above into the post params  %>
+    <% end %>
+
+    <% end %>
+    <button>Post your post :-()</button>
+</form>

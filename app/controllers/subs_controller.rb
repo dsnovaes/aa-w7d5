@@ -6,15 +6,17 @@ class SubsController < ApplicationController
     end
 
     def show
-        @posts = Sub.find_by(id: params[:id]).posts
+        @sub = Sub.find_by(id: params[:id]) #this shows the sub
+        # @posts = Sub.find_by(id: params[:id]).posts #this shows the posts
     end
 
     def create
         @sub = Sub.new(sub_params)
+        @sub.moderator_id = current_user.id
         if @sub&.save
             redirect_to sub_url(@sub)
         else
-            flash[:errors] = ["can't create nil"] # won't work => @sub.errors.full_messages
+            flash.now[:errors] = ["can't create nil"] # won't work => @sub.errors.full_messages
             render :new
         end
     end
@@ -26,7 +28,7 @@ class SubsController < ApplicationController
     def update
         @sub = Sub.find_by(id: params[:id])
         if @sub&.update(sub_params)
-            redirect_to subs_url
+            redirect_to sub_url(@sub)
         else
             flash[:errors] = ["can't update nil"] # won't work => @sub.errors.full_messages
             render :edit

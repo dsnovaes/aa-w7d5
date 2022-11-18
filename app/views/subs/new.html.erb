@@ -1,0 +1,10 @@
+<h1>New Sub</h1>
+
+<form action="<%=subs_url%>" method="POST">
+    <%= render "shared/form_token" %>
+    <label for="sub_title">Title</label>
+    <input type="text" name="sub[title]" id="sub_title" >
+    <label for="sub_description">Description</label>
+    <input type="text" name="sub[description]" id="sub_description" >
+    <button>Create Sub</button>
+</form>

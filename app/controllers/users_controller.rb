@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        @subs = Sub.where(moderator_id: current_user.id)
         @user = User.find_by(id: params[:id])
     end
 

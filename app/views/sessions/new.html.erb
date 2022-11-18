@@ -3,10 +3,10 @@
 <form action="<%= session_url %>" method="POST">
   <%= render "shared/form_token"  %>
   <label>Username
-    <input type="text" name="user[username]" placeholder="username"> 
+    <input type="text" name="user[username]" placeholder="username" value="<%=@temp_username%>">
   </label>
   <label>Password
-    <input type="password" name="user[password]" placeholder="password"> 
+    <input type="password" name="user[password]" placeholder="password">
   </label>
   <button>Sign In</button>
 </form>

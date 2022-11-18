@@ -1,3 +1,10 @@
-<h1>Hello <%= current_user.username %></h1> 
+<h1>Hello <%= current_user.username %></h1>
 
-<a href="<%= new_user_url %>">new user</a>
+<a href="<%= new_sub_url %>">create a new sub</a><br><br>
+
+<% if @subs %>
+    <% @subs.each do |sub| %>
+        <%= link_to "#{sub.title}", sub_url(sub)%>
+        <%= link_to "edit: #{sub.title}", edit_sub_url(sub)%> <br>
+    <% end %>
+<% end %>
