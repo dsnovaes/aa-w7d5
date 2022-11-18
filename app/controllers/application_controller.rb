@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     # CRRLLL
-    helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in?, :btn_to
 
     def current_user
         @current_user ||= User.find_by(session_token: session[:session_token])
@@ -24,4 +24,11 @@ class ApplicationController < ActionController::Base
         session[:session_token] = nil
     end
 
+    def btn_to(action, label, token)
+        html = "<form action='#{action}' method='POST'>"
+        html += "<input type='hidden' name='_method' value='DELETE'>"
+        html += "<input type='hidden' name='authenticity_token' value='#{token}'>"
+        html += "<button>#{label}</button></form>"
+        return html.html_safe
+    end
 end

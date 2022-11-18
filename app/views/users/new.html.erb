@@ -1,0 +1,12 @@
+<h1>Sign Up</h1>
+
+<form action="<%= users_url %>" method="POST">
+  <%= render "shared/form_token"  %>
+  <label>Username
+    <input type="text" name="user[username]" placeholder="username"> 
+  </label>
+  <label>Password
+    <input type="password" name="user[password]" placeholder="password"> 
+  </label>
+  <button>Sign Up</button>
+</form>

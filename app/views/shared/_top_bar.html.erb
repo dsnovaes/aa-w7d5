@@ -1,0 +1,8 @@
+<% if logged_in? %>
+  Welcome <%= current_user.username %>
+  <%= btn_to(session_url, "Sign Out", form_authenticity_token)  %>
+<% else %>
+  <%= link_to "sign in", new_session_url  %>
+  • <%= link_to "sign up", new_user_url  %>
+  
+<% end %>

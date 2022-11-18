@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-    before_action :required_logged_in, only: [:destroy]
+    before_action :require_logged_in, only: [:destroy]
 
     def new
         # login form
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         )
         if user
             login(user)
-            redirect_to users_url
+            redirect_to user_url(user)
         else
             @temp_username = params[:user][:username]
             flash[:errors] = ["Invalid credentials"]
